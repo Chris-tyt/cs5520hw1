@@ -1,0 +1,31 @@
+# 设置编译器和路径
+CC = gcc
+INCLUDE_PATH = D:/software/mpi/Include
+LIB_PATH = D:/software/mpi/Lib/x64
+CFLAGS = -I"$(INCLUDE_PATH)"
+LDFLAGS = -L"$(LIB_PATH)" -lmsmpi
+
+# 定义目标文件和可执行文件名称
+TARGET = telephone
+OBJECTS = telephone.o garble.o
+
+# 默认目标
+all: $(TARGET)
+
+# 编译规则：将每个 .c 文件编译为 .o 文件
+telephone.o: telephone.c
+	$(CC) $(CFLAGS) -c telephone.c -o telephone.o
+
+garble.o: garble.c
+	$(CC) $(CFLAGS) -c garble.c -o garble.o
+
+# 链接规则：将所有 .o 文件链接为最终的可执行文件
+$(TARGET): $(OBJECTS)
+	$(CC) $(OBJECTS) $(LDFLAGS) -o $(TARGET)
+
+# 清理生成的中间文件和可执行文件
+clean:
+	rm -f $(OBJECTS) $(TARGET)
+
+# PHONY 目标，防止与实际文件名冲突
+.PHONY: all clean
