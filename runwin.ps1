@@ -2,7 +2,7 @@
 Write-Output "Executing MPI command: mpiexec -n 4 .\telephone.exe 'test'"
 
 # op
-mpiexec -n 10 .\telephone.exe "Babbling bubbles"
+mpiexec -n 10 .\telephone.exe "Babbling bubbles" > telephone.txt
 
 # check
 if ($LASTEXITCODE -eq 0) {

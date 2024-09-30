@@ -6,4 +6,4 @@
 #SBATCH --qos=debug
 #SBATCH --account=m4776
 
-srun -n 10 ./telephone "Babbling bubbles" 
+srun -n 10 ./telephone "Babbling bubbles" > telephone.txt
